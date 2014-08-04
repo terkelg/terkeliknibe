@@ -4,7 +4,7 @@ Terkel i Boligknibe
 !["Terkel i Boligknibe"](https://raw.githubusercontent.com/terkelg/terkeliknibe/master/image.png "Terkel i Boligknibe")
 
 A website I did after being house hunter for nearly four months.
-The site is now down, but the source code avalible here on GitHub.
+The site isn't online anymore, but the source code is avalible here on GitHub.
 
 ### Type
 The font's isn't uploaded due to copyrights. 
@@ -14,4 +14,4 @@ The font's isn't uploaded due to copyrights.
  
 ### The nitty gritty
 All rights belong to their respective owners.
-I'm not affiliated with Nordisk Film. "Terkel i Knibe" is a copyright of Nordisk Film.q
+I'm not affiliated with Nordisk Film. "Terkel i Knibe" is a copyright of Nordisk Film.
