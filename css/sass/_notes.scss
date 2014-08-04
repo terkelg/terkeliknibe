@@ -1,0 +1,59 @@
+/*******************************
+ * Notes
+ ******************************* */
+[data-note] {
+  position: relative;
+  white-space: pre; /* respect spaces in my span */
+}
+[data-note]:before {
+  content: attr(data-note);
+  display: block;
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+
+  white-space: nowrap;
+  @include handwriting;
+  color: $dark;
+}
+/* Roate effects */
+.rotate1[data-note]:before {
+  transform: rotate(5deg);
+  transform-origin: bottom left;
+}
+.rotate2[data-note]:before {
+  transform: rotate(-1.5deg);
+  transform-origin: bottom left;
+}
+.rotate3[data-note]:before {
+  transform: rotate(5deg);
+  transform-origin: top right;
+}
+
+/* Crossedout effect */
+.crossedout[data-note]:after {
+  content: " ";
+  background: #282828;
+  height: 2px;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 11px;
+}
+
+/* Added Effect, using BG Image */
+.added[data-note]:before { left: 0; }
+.added[data-note]:after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 9px;
+  position: absolute;
+  bottom: 12px;
+  left: -22px;
+  background-image: url('../img/add.svg');
+  background-repeat: no-repeat;
+  background-position: bottom center;
+}

@@ -1,0 +1,34 @@
+/*******************************
+ * Mixins & Settings
+ ******************************* */
+
+/* Colors */
+$yellow: #FEEA34;
+$pink: #F60674;
+$dark: #282828;
+
+/* Breakpoints */
+$first-breakpoint-value: 400px;
+$second-breakpoint-value: 700px;
+$third-breakpoint-value: 900px;
+
+$medium: new-breakpoint(min-width em($first-breakpoint-value) max-width
+em($second-breakpoint-value));
+$large: new-breakpoint(min-width em($second-breakpoint-value + 1));
+$xlarge: new-breakpoint( min-width em($third-breakpoint-value + 1));
+$fucked: new-breakpoint( max-height em(550px));
+
+/* Mixins */
+/* vertical align - usage: @extend %vertical-align; */
+@mixin vertical-align {
+  position: relative;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+@mixin handwriting {
+  font-family: "felt-tip-roman",sans-serif;
+  font-weight: bold;
+}

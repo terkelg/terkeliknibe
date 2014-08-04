@@ -1,0 +1,382 @@
+/*
+ ______        __       __  _____  _              _
+/_  __/__ ____/ /_____ / / / ___/ (_)__ _____  __(_)__ _
+ / / / -_) __/  '_/ -_) / / (_ / / / -_) __/ |/ / / _ `/
+/_/  \__/_/ /_/\_\\__/_/  \___/_/ /\__/_/  |___/_/\_, /
+                             |___/               /___/
+*/
+
+@import "normalize";
+
+/* Import Grid */
+@import "bourbon/bourbon";
+@import "neat/neat";
+
+/*
+ * Load font
+ * - Font from myfonts
+ */
+@import "font";
+
+/*
+ * Load global styles
+ * - Based on HTML5 Boilerplate
+ */
+@import "settings";
+@import "base";
+
+/*
+ * Type
+ */
+@import "type";
+
+/*
+ * Scribble Notes
+ */
+@import "notes";
+
+
+
+/* ==========================================================================
+   GENEREL LAYOUT
+   ========================================================================== */
+
+/*
+ * Every section have a wrapper as it direct child.
+ * Sections also have modifiers, telling weather it's
+ * content is a single column, or two columns.
+ *
+ * Inside every section is the content. The content also
+ * have a wrapper as it direct child.
+ */
+
+/*
+ * Section - Outer
+ */
+.section { min-height: 100vh; }
+.section--single { height: 100%; }
+.section--columns {}
+
+/*.section*/ .section__wrapper {
+  @include outer-container;
+  height: 100%;
+  padding: 20% 20px;
+}
+
+
+/*
+ * Contnt - Inner
+ */
+.content {
+  @include span-columns(12);
+  height: 100%;
+}
+
+/* Single Column Sections */
+.section--single .content__wrapper { @include vertical-align; }
+
+
+/* Mutiple Column Sections */
+.section--columns .content__wrapper {
+  @include outer-container;
+  height: 100%;
+}
+.section--columns .content__wrapper .column { @include span-columns(12); } /* Mobile First */
+
+
+/*
+ * Optimize for Desktop
+ */
+@include media($large) {
+
+  /* Center Vertical */
+  .section--single .content__wrapper { @include vertical-align; }
+
+  /* Smaller padding on large screens */
+  .section__wrapper { padding: 40px 20px; }
+
+  /*
+   * Make single columns span 6 and shifted to center
+   * on large screens, except the hero (it shold be 100% width)
+   */
+  .section--single:not(.hero) .content {
+    @include span-columns(6);
+    @include shift(3);
+  }
+
+  /* Firefox Fix */
+  .section--columns { height: 100%; }
+  .section--columns .content__wrapper { height: 100%; }
+
+  /* Activate two columns */
+  .section--columns .content__wrapper .column {
+    @include span-columns(6);
+    @include vertical-align;
+  }
+}
+
+
+@include media($xlarge) {
+
+  /* Remove padding on large, to center better */
+  .section__wrapper { padding: 0 20px; }
+
+}
+
+
+/*
+ * Vertical Fix
+ * Reset Vertical Centering on very tall screens
+ * and make height of section to auto to fit better.
+ */
+@include media($fucked) {
+
+  /* Add more spacing */
+  .section__wrapper { padding: 40px 20px; }
+
+  .section--columns .content__wrapper,
+  .section--columns .content__wrapper .column,
+  .contact.section--single .content__wrapper ,
+  .text {
+    top: auto;
+    transform: none;
+    -webkit-transform: none;
+  }
+  .section--single:not(.hero),
+  .section--columns { height: auto; }
+
+  /* Fix huge image in firefox */
+  .image__wrapper__img {
+    max-width: 60%!important;
+  }
+}
+
+
+
+/* ==========================================================================
+   Default Content
+   ========================================================================== */
+
+/* Image & Map */
+.image,
+.map { height: 100%; }
+
+.image__wrapper,
+.map__wrapper {
+  text-align: center;
+  height: 100%;
+}
+.image__wrapper__img,
+.map__wrapper__img { max-width: 100%; }
+
+/* Image */
+.image__wrapper__img {
+  max-height: 100%;
+  height: 100%;
+}
+
+/* Map */
+.map__wrapper__img{ height: 70%; }
+@include media($large) {
+  .map__wrapper__img{
+    max-height: 100%;
+    height: 100%;
+    padding: 40px 0;
+  }
+}
+
+/* Text */
+.text { padding: 40px 0; }
+.text:first-of-type {padding-top: 0; } /* remove padding top if first element */
+
+
+/* ==========================================================================
+   SECTION 1: Hero
+   ========================================================================== */
+
+/*
+ * Wrapper Layout & Style
+ */
+.section.hero {
+  background: url("../img/arrow2.svg") $yellow no-repeat 50% 90%;
+  background-size: 50px;
+  animation: animatedArrow 0.5s alternate infinite forwards;
+}
+/* Always center on Hero section */
+.hero .section .content__wrapper { @include vertical-align; }
+
+/*  Banner */
+.banner { position: relative; }
+.banner__text { width: 100%; }
+.banner__overlay {
+  display: none;
+  position: relative;
+}
+
+/* Show notes on desktop and add padding */
+@include media($large) {
+  .banner { margin: 0 20px; }
+  .banner__overlay {
+    display: block;
+    width: 100%;
+    position: absolute;
+    top: 0;
+  }
+}
+
+/* Smaller arrow on ultra tall screens */
+@include media(max-height 350px) {
+  .section.hero { background-size: 30px; }
+}
+
+
+
+
+
+/* ==========================================================================
+   SECTION 2: Intro
+   ========================================================================== */
+
+/*
+ * Wrapper Layout & Style
+ */
+.section.intro {
+  background: $pink;
+  color: $yellow;
+}
+/* Make picture go to bottom of section */
+.section.intro .section__wrapper { padding-bottom: 0; }
+
+
+@include media($xlarge) {
+  /* Add notes to heading on large screens */
+  .intro h2:after {
+    content: "Hurtigst Muligt!";
+    position: absolute;
+    right: 121px;
+    top: -16px;
+
+    @include handwriting;
+    text-transform: uppercase;
+    font-size: 0.4em;
+    color: $dark;
+    transform: rotate(-4deg);
+    transform-origin: center;
+  }
+}
+
+
+/* ==========================================================================
+   SECTION 3: Details
+   ========================================================================== */
+
+/*
+ * Wrapper Layout & Style
+ */
+.section.details {
+  background: $yellow;
+  color: $pink;
+ }
+
+ @include media($xlarge) {
+  /* Add notes to heading on large screens */
+  .details h2:after {
+    content: "Lidt mere tekst";
+    position: absolute;
+    left: 0;
+    top: 20px;
+
+    @include handwriting;
+    text-transform: uppercase;
+    font-size: 0.4em;
+    color: $dark;
+    transform: rotate(5deg);
+    transform-origin: center;
+  }
+}
+
+
+/* ==========================================================================
+   SECTION 3: Contact
+   ========================================================================== */
+
+/*
+ * Wrapper Layout & Style
+ */
+.section.contact {
+  color: $yellow;
+  background-color: $pink;
+  background-image: url(../img/skyline.svg);
+  background-repeat: repeat-x;
+  background-position: 0 bottom;
+  animation: animatedSkyline 45s linear infinite forwards;
+}
+
+
+/*
+ * Share button
+ */
+.share {
+  height: 70px;
+
+  .delmig.sharer-0 {
+    width: 250px;
+    margin: 0 auto;
+    height: auto;
+  }
+  .delmig.sharer-0 label {
+    background: $yellow;
+    color: $pink;
+  }
+  .delmig.sharer-0 .social.networks-5.center { margin-left: -25px; }
+  .delmig.sharer-0 .social.bottom { margin-top: -10px; }
+  .delmig.sharer-0 .social ul li { line-height: 22px; }
+}
+
+
+/*
+ * Content Style
+ */
+
+/* Contact Info */
+.contact h2 { text-align: center; }
+.contact-info {
+  font-size: 2em;
+  list-style: none;
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+.contact-ps {
+  color: $dark;
+  //background-color: rgba(246, 6, 116, 0.5);
+  @include handwriting;
+  text-align: center;
+  white-space: nowrap;
+  clear: both;
+  font-size: 0.6em;
+ }
+.contact a {
+  text-decoration: none;
+  color: $yellow;
+}
+.contact a:hover { text-decoration: underline; }
+
+
+/* ==========================================================================
+   CSS ANIMATIONS
+   ========================================================================== */
+
+@keyframes animatedSkyline {
+  from { background-position: 0 bottom; }
+  to { background-position: 2010px bottom; }
+}
+
+@keyframes animatedArrow {
+  from { background-position: 50% 90%; }
+  to { background-position: 50% 93%; }
+}
+
+
+/* CSS Animate */
+@import "animate"

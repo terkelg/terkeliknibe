@@ -1,0 +1,4 @@
+# Ignore fonts. They are private and cannot be uploaded to GitHub
+css/webfonts/2B4AF9_0_0.ttf
+css/webfonts/2B4AF9_0_0.eot
+css/webfonts/2B4AF9_0_0.woff

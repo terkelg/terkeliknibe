@@ -1,0 +1,15 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Terkel Gjervig -- Designer & developer -- @terkelg
+
+# THANKS
+
+    Anders Anden Matthesen, and all who shares.
+
+# TECHNOLOGY COLOPHON
+
+    HTML5, CSS3, Git, GitHub, HTML5 Boilerplate, Wow, Gulp.js
+    Normalize.css, jQuery, Modernizr, Bourbon Neat

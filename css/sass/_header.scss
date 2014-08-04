@@ -1,0 +1,55 @@
+/****************************************
+ * Fixed Header
+ ****************************************/
+  .header {
+    position:fixed;
+    height: 50px;
+    display:block;
+    width: 100%;
+    background: $dark;
+    z-index:9;
+    text-align:center;
+    color: $yellow;
+    padding: 20px 0 0 0;
+
+    font-family: BauhausStd-Heavy;
+    font-weight: normal;
+    font-style: normal;
+  }
+
+  .header{
+    top:0px;
+  }
+
+
+
+  /* Bottom menu
+  * ---------------------------------------
+  #infoMenu {
+    bottom: 80px;
+  }
+  #infoMenu li a {
+    color: #fff;
+    z-index: 999;
+  }
+  */
+
+
+/* Navigaton Button
+.navigation .menu-icon {
+  float: right;
+  transform: translate3d(0, 0, 0);
+}
+.navigation .menu-icon:after {
+  content: "";
+  position: absolute;
+  display: block;
+  height: 0;
+  top: 50%;
+  margin-left: 40px;
+  margin-top: -0.44444rem;
+  left: 0.80556rem;
+  box-shadow: 0 0px 0 1px $yellow, 0 6px 0 1px $yellow, 0 12px 0 1px $yellow;
+  width: 0.88889rem;
+}
+*/

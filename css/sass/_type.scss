@@ -1,0 +1,29 @@
+/*
+ * Generel Styles
+ */
+h1, h2, h3, h4 {
+  font-family: BauhausStd-Heavy;
+  font-weight: normal;
+  font-style: normal;
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.15;
+  text-align: center;
+}
+
+h1 { font-size: 4em; }
+h2 { font-size: 3em; }
+h3 { font-size: 2.5em; }
+
+@include media($large) {
+  h1, h2, h3, h4 { text-align: left; }
+}
+
+@include media($xlarge)  {
+  h1, h2, h3, h4 { line-height: 1.6; }
+}
+
+p {
+  line-height: 1.8;
+  margin: 0;
+}
